@@ -1,35 +1,42 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-
-//import java.sql.DriverManager;
-//import java.util.Calendar;
-
-/**
- * A Java MySQL PreparedStatement INSERT example.
- * Demonstrates the use of a SQL INSERT statement against a
- * MySQL database, called from a Java program, using a
- * Java PreparedStatement.
- *
- * Created by Alvin Alexander, http://alvinalexander.com
- */
 public class Main
 {
 
     public static void main(String[] args)
     {
+        Scanner scan = new Scanner(System.in);
+        List<Guest> users = new ArrayList<>();
         try
         {
             // create a mysql database connection
-            String myDriver = "com.mysql.cj.jdbc.Driver"; //org.gjt.mm.mysql.Driver //com.mysql.jdbc.Driver
-            String myUrl = "jdbc:mysql://localhost:3306/phpmyadmin";  // jdbc:mysql://localhost:3306/casottoDB
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/cicero";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(myUrl, "phpmyadmin", "Hka7+ha6!");
+            Connection conn = DriverManager.getConnection(myUrl, "root", "passwordina");
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM guest");
+            while(rs.next()){
+                Guest guest = new Guest(rs.getInt("guest_id"),rs.getString("email"), rs.getString("password"), rs.getString("name"), rs.getString("surname"));
+                users.add(guest);
+            }
             conn.close();
+            System.out.println("Effettua il login per viaggiare!");
+            System.out.println("Inserisci la tua mail");
+            String username = scan.nextLine();
+            System.out.println("Inserisci la password");
+            String password = scan.nextLine();
+            Guest generic_guest = new Guest(0,"","","","");
+            generic_guest.login(username, password, users);
         }
         catch (Exception e)
         {
             System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            //System.err.println(e.getMessage());
+            System.out.println(e);
         }
     }
 }
