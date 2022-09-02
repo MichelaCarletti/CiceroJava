@@ -63,6 +63,7 @@ public class Main
                         System.out.println("4) Prenota corso di formazione");
                         System.out.println("5) Recensisci un tour");
                         System.out.println("6) Recensisci una guida");
+                        System.out.println("7) Mostra tutti i tour disponibili");
                         int choice = 0;
                         choice = scan.nextInt();
                         switch(choice){
@@ -87,6 +88,9 @@ public class Main
 
                             case 3:
                                 current_tourist.suggest_tour();
+                                break;
+                            default:
+                                System.out.println("Scelta non disponibile");
                                 break;
                         }
                     }
