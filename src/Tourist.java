@@ -62,6 +62,7 @@ public class Tourist extends User {
         description = scan.nextLine();
         Notification notification = new Notification(0,title, description, this.getId(), 0);
         notification.send_notification("Nuovo tour suggerito!");
+        System.out.println("Tour suggerito!");
 
     }
 
