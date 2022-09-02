@@ -11,4 +11,10 @@ public class Toponym {
         this.name = name;
         this.area = area;
     }
+
+    public boolean insert_toponym(){return false;}
+
+    public boolean modify_toponym(int toponym_id){return false;}
+
+    public boolean delete_toponym(int toponym_id){return false;}
 }

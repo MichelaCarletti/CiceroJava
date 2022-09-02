@@ -24,4 +24,10 @@ public class TrainingCourse {
         this.time = time;
         this.subscribers = new ArrayList<>();
     }
+
+    public boolean insert_training_course(){return false;}
+
+    public boolean modify_training_course(int training_course_id){return false;}
+
+    public boolean delete_training_course(int training_course_id){return false;}
 }

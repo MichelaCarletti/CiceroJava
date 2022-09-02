@@ -15,4 +15,6 @@ public class Review {
         this.sender_id = sender_id;
         this.recipient_id = recipient_id;
     }
+
+    public void insert_review(){}
 }
