@@ -80,6 +80,7 @@ public class Main
                                 }
                                 break;
                             case 2:
+                                System.out.println("Inserisci la mail del tuo amico");
                                 String guest_email = scan.nextLine();
                                 current_tourist.invite_guest(guest_email, users);
                                 break;
